@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='outliers',
+setup(name='outliers_Nerdward',
     version='0.1',
     description='A simple package to wrap some outlier detection functionality',
     author='Ohakim Nnaemeka',

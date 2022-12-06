@@ -6,8 +6,10 @@ name = "pypi"
 [packages]
 pytest = "*"
 numpy = "*"
+scikit-learn = "*"
 
 [dev-packages]
+outliers = {editable = true, path = "."}
 
 [requires]
 python_version = "3.10"

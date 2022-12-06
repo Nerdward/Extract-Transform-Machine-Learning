@@ -8,4 +8,4 @@ test:
 .PHONY: clean test
 
 clean:
-	rm -rf .pytest_cache
+	rm -rf .pytest_cache .coverage .pytest_cache coverage.xml
