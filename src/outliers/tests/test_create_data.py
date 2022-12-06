@@ -1,6 +1,6 @@
 import numpy
 import pytest 
-import utils.data
+import outliers.utils.data
 
 @pytest.fixture()
 def dummy_data():
