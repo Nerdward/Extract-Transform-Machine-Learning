@@ -22,7 +22,7 @@ default_args = {
  
 
 with DAG(
-    'etml pipeline',
+    'Etml_pipeline',
     default_args=default_args,
     description='Pipeline for Anomaly Detection',
     schedule_interval=timedelta(days=1), # run daily? check
