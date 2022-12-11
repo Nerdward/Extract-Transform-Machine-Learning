@@ -1,7 +1,8 @@
 name : Upload DAGS to S3
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches: 
+      - feature/dbscan
 jobs:
   deploy: 
     name: Upload DAGs to Amazon S3
