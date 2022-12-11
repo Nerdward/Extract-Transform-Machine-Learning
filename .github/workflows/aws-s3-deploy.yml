@@ -22,7 +22,7 @@ jobs:
 
     - name: Copy files to bucket with the AWS CLI
       run: |
-        aws s3 cp ./dags s3://mleip-airflow-example-nerdward --recursive --include "*.py"
+        aws s3 cp ./dags s3://mleip-airflow-example-nerdward/dags --recursive --include "*.py"
 
     - name: Copy requirements.txt file to bucket with the AWS CLI
       working-directory: 'src'
