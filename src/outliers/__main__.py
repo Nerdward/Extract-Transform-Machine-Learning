@@ -3,7 +3,6 @@ import json
 import argparse
 import numpy as np
 
-from outliers.utils.data import create_data
 from .detectors.detection_models import DetectionModels
 from .detectors import pipelines
 from .definitions import MODEL_CONFIG_PATH
@@ -11,8 +10,7 @@ from .definitions import MODEL_CONFIG_PATH
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Anomaly Detection CLI tool')
-    parser.add_argument('--source', 
-                        help='Specify the location of data')
+    parser.add_argument('--source', help='Specify the location of data')
     parser.add_argument('--target', default='target.json',
                         help='Specify the location to save the predictions')
 

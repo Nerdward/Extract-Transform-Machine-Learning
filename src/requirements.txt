@@ -1,4 +1,4 @@
-outliers-nerdward==0.5
+outliers-nerdward==0.6
 scikit-learn
 numpy
 
