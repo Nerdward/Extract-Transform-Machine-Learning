@@ -10,7 +10,8 @@ from airflow.decorators import task
 
 from utils.data import s3_download
 
-DIR_PATH =  os.path.dirname(os.path.realpath(__file__))
+# DIR_PATH =  os.path.dirname(os.path.realpath(__file__))
+DIR_PATH =  os.environ.get('AIRFLOW_HOME','/opt/airflow')
 SOURCE = DIR_PATH + 'data.csv'
 TARGET = DIR_PATH + 'target.json'
 S3_BUCKET = 'mleip-airflow-example-nerdward'
