@@ -1,5 +1,7 @@
 import logging
 import json
+import argparse
+import numpy as np
 
 from outliers.utils.data import create_data
 from .detectors.detection_models import DetectionModels
@@ -8,7 +10,18 @@ from .definitions import MODEL_CONFIG_PATH
 
 
 if __name__ == "__main__":
-    data = create_data()
+    parser = argparse.ArgumentParser(description='Anomaly Detection CLI tool')
+    parser.add_argument('--source', 
+                        help='Specify the location of data')
+    parser.add_argument('--target', default='target.json',
+                        help='Specify the location to save the predictions')
+
+    args = parser.parse_args()
+    source = args.source
+    target = args.target
+
+    # data = create_data()
+    data = np.loadtxt(source, delimiter=",")
     logging.info("Reading in models")
     models = DetectionModels(MODEL_CONFIG_PATH).get_models()
     logging.info("iterating over models")
@@ -20,5 +33,5 @@ if __name__ == "__main__":
         logging.info("Result calculated")
         result = json.dumps({'results':result.tolist()})
         
-        with open('target.json', 'w') as f:
+        with open(target, 'w') as f:
             f.write(result)
