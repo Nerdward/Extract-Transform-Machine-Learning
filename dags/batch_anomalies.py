@@ -43,6 +43,11 @@ with DAG(
         task_id='get_anomalies',
         bash_command=f'python3 -m outliers --target {TARGET} --source {SOURCE}'
         )
+    
+    file_system = BashOperator(
+        task_id='file system',
+        bash_command=f'ls'
+        )
 
     @task
     def upload_to_s3():
@@ -51,4 +56,4 @@ with DAG(
 
         # s3.put_object(Bucket=S3_BUCKET, Key=S3_KEY, Body='/usr/local/airflow/scripts/target.json')
 
-    get_anomalies >> upload_to_s3()
+    get_anomalies >> file_system >> upload_to_s3()
