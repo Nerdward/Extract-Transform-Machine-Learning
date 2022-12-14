@@ -45,7 +45,7 @@ with DAG(
         )
     
     file_system = BashOperator(
-        task_id='file system',
+        task_id='file_system',
         bash_command=f'ls'
         )
 
