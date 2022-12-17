@@ -35,7 +35,7 @@ def test_model_get_models(example_models):
 
 def test_model_evaluation(dummy_data, example_detector):
     result = example_detector.detect(dummy_data)
-    assert len(result[result == -1]) == 39
+    assert len(result[result == -1]) == 19
     assert len(result) == len(dummy_data)
     assert np.unique(result)[0] == -1
-    assert np.unique(result)[1] == 1
+    assert np.unique(result)[1] == 0

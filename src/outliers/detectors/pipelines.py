@@ -1,3 +1,5 @@
+import logging
+
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
 
@@ -8,4 +10,11 @@ class OutlierDetector():
 
         self.pipeline = make_pipeline(StandardScaler(), self.model)
     def detect(self, data):
-        return self.pipeline.fit(data).predict(data)
+        try:
+            logging.debug("Fitting pipeline")
+            # return self.pipeline.fit(data).predict(data)
+            return self.pipeline.fit_predict(data)
+        except Exception as e:
+            logging.debug(f"fit_predict() failed with object {self.pipeline} ")
+            logging.debug(e)
+            print(e)
