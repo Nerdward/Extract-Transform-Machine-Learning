@@ -1,0 +1,30 @@
+name : Upload DAGS to S3
+on:
+  push:
+    branches: 
+      - feature/dbscan
+jobs:
+  deploy: 
+    name: Upload DAGs to Amazon S3
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+
+    - name: Configure AWS credentials from account
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Copy files to bucket with the AWS CLI
+      run: |
+        aws s3 cp ./dags s3://mleip-airflow-example-nerdward/dags --recursive --include "*.py"
+
+    - name: Copy requirements.txt file to bucket with the AWS CLI
+      working-directory: 'src'
+      run: |
+        aws s3 cp requirements.txt s3://mleip-airflow-example-nerdward

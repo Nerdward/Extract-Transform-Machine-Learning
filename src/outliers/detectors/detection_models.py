@@ -1,5 +1,6 @@
 import json
 from sklearn.ensemble import IsolationForest
+from sklearn.cluster import DBSCAN
 
 class DetectionModels(object):
     def __init__(self, model_config_path=None):
@@ -12,6 +13,8 @@ class DetectionModels(object):
             return None
         elif model_name == 'IsolationForest' and params is not None:
             return IsolationForest(**params)
+        elif model_name == 'DBSCAN' and params is not None:
+            return DBSCAN(**params)
     def get_models(self):
         models = []
         for model_definition in self.model_def:
